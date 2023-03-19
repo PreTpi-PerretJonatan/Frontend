@@ -15,7 +15,7 @@ namespace FitFocus.Services
 	{
         public static string GetUrl()
         {
-            return "https://fitfocus.cld.education";
+            return "https://fitfocus.cld.education/api/";
         }
 
         /// <summary>
@@ -28,16 +28,19 @@ namespace FitFocus.Services
         {
             try
             {
-                string Url = GetUrl() + "?apimethod=authenticate";
+                string Url = GetUrl() + "login";
                 string html = string.Empty;
                 List<KeyValuePair<string, string>> body = new List<KeyValuePair<string, string>>();
-                body.Add(new KeyValuePair<string, string>("security-string", securityString));
+                body.Add(new KeyValuePair<string, string>("secure_string", securityString));
                 Response response = JsonConvert.DeserializeObject<Response>(await PostToAPIEndpoint(body, Url));
-                if (response.Code == "200")
+                if (response.success)
                 {
-                    string userString = response.Content;
-                    User user = JsonConvert.DeserializeObject<DeserializedUser>(userString).ToUser();
+                    User user = new User();
+                    LoginData loginData = response.data;
                     user.SecureString = securityString;
+                    user.Token = loginData.token;
+                    user.Username = loginData.username;
+                    user.IsAuthenticated = true;
                     return user;
                 }
                 return new User();

@@ -7,6 +7,7 @@ namespace FitFocus.Models
     public class User
     {
         public string SecureString;
+        public string Token;
         public string Username;
         public string Policies;
         public bool IsAuthenticated;
@@ -43,25 +44,16 @@ namespace FitFocus.Models
 
     public class Response
     {
-        public string Code { get; set; }
-        public string Status { get; set; }
-        public string Message { get; set; }
-        public string Content { get; set; }
+        public bool success { get; set; }
+        public LoginData data { get; set; }
+        public string message { get; set; }
     }
 
-    public class DeserializedUser
+    public class LoginData
     {
-        public string Username;
-        public string Policies;
-
-        public User ToUser()
-        {
-            User user = new User();
-            user.Username = this.Username;
-            user.Policies = this.Policies;
-            user.IsAuthenticated = true;
-            return user;
-        }
+        public string username;
+        public string token;
+        public string policies;
     }
 }
 
