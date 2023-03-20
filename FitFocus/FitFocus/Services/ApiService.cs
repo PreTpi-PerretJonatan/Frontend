@@ -40,6 +40,7 @@ namespace FitFocus.Services
                     user.SecureString = securityString;
                     user.Token = loginData.token;
                     user.Username = loginData.username;
+                    user.Policies = loginData.policies == null ? "" : loginData.policies;
                     user.IsAuthenticated = true;
                     return user;
                 }
