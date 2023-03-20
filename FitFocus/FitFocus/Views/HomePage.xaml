@@ -45,15 +45,14 @@
                             <StackLayout Margin="2, 0, 2, 10">
                                 <Frame HasShadow="false" CornerRadius="50" BackgroundColor="Transparent" Padding="0, 0, 0, 0" Margin="5, 0, 6, 0">
                                     <AbsoluteLayout Padding="0">
-                                        <Frame HasShadow="False" CornerRadius="20" Padding="0" IsClippedToBounds="True">
+                                        <!--<Frame HasShadow="False" CornerRadius="20" Padding="0" IsClippedToBounds="True">
                                             <Image Source="{Binding CoverImageUrl}" WidthRequest="200" HeightRequest="200"/>
-                                        </Frame>
+                                        </Frame>-->
                                         <StackLayout Margin="10, 5, 10, 10" WidthRequest="175" HeightRequest="175">
-                                            <Label Text="{Binding Name}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                            <Label Text="{Binding name}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                                                <Label Text="{Binding ApproxTime}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>
-                                                <Label Text="{Binding SeriesNumber}" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
-
+                                                <Label Text="{Binding approximate_duration}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>
+                                                
                                             </StackLayout>
                                         </StackLayout>
                                     </AbsoluteLayout>

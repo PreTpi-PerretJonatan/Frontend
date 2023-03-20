@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using FitFocus.Models;
 using System.Diagnostics;
+using System.Linq;
 
 namespace FitFocus.Services
 {
@@ -49,7 +50,7 @@ namespace FitFocus.Services
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                throw new Exception("Login error");
+                throw new Exception("API error");
             }
         }
 
@@ -59,27 +60,27 @@ namespace FitFocus.Services
         /// <param name="Url">url to connect</param>
         /// <param name="securityString">secure string of the user</param>
         /// <returns>response from the server</returns>
-        public async static Task<List<Workout>> PostToAPIEndpoint_GetWorkouts(string securityString)
+        public async static Task<List<Workout>> PostToAPIEndpoint_GetWorkouts(string token)
         {
             try
             {
-                string Url = GetUrl() + "?apimethod=workouts";
+                string Url = GetUrl() + "workouts";
                 string html = string.Empty;
                 List<KeyValuePair<string, string>> body = new List<KeyValuePair<string, string>>();
-                body.Add(new KeyValuePair<string, string>("security-string", securityString));
-                WorkoutResponse response = JsonConvert.DeserializeObject<WorkoutResponse>(await PostToAPIEndpoint(body, Url));
-                if (response.Code == "200")
+                body.Add(new KeyValuePair<string, string>("api_token", token));
+                string a = await PostToAPIEndpoint(body, Url);
+                WorkoutResponse response = JsonConvert.DeserializeObject<WorkoutResponse>(a);
+                if (response.success)
                 {
-                    string userString = response.Content;
-                    WorkoutList workout = JsonConvert.DeserializeObject<WorkoutList>(userString);
-                    return workout.Workouts;
+                    Workout[] workouts = response.data;
+                    return workouts.ToList();
                 }
                 return new List<Workout>();
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                throw new Exception("Login error");
+                throw new Exception("API error");
             }
         }
 

@@ -29,13 +29,17 @@ namespace FitFocus.Views
 
         protected override void OnAppearing()
         {
-            _viewModel.Refreshing();
+            try
+            {
+                _viewModel.Refreshing();
+            } catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("ERROR", "An error occured", "OK");
+                });
+            }
             base.OnAppearing();
-        }
-
-        void RefreshView_Refreshing(System.Object sender, System.EventArgs e)
-        {
-            _viewModel.Refreshing();
         }
 
         void AccountButton_Clicked(Object sender, EventArgs e)

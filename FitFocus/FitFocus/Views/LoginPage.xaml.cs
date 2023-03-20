@@ -103,29 +103,40 @@ namespace FitFocus.Views
 
         public async Task LoginSystem(string secureString)
         {
-            User user = await ApiService.PostToAPIEndpoint_Authentify(secureString);
-            if (user.IsAuthenticated)
+            try
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                User user = await ApiService.PostToAPIEndpoint_Authentify(secureString);
+                if (user.IsAuthenticated)
                 {
-                    App.CurrentUser = user;
-                    if (CheckboxSaveSecurestring.IsChecked)
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        App.CurrentUser.SaveLogin = true;
-                        await App.CurrentUser.AsyncPersistsPropertiesOnSuccessfulLogin();
-                    }
-                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-                });
-            }
-            else
+                        App.CurrentUser = user;
+                        if (CheckboxSaveSecurestring.IsChecked)
+                        {
+                            App.CurrentUser.SaveLogin = true;
+                            await App.CurrentUser.AsyncPersistsPropertiesOnSuccessfulLogin();
+                        }
+                        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                    });
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        ActivityIndicatorManipulation(false);
+                        await DisplayAlert("Error", "Your credentials are invalid", "OK").ContinueWith(tsk =>
+                        {
+                            CameraManipulation(true);
+                        });
+                    });
+                }
+            }catch(Exception ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    ActivityIndicatorManipulation(false);
-                    await DisplayAlert("Error", "Your credentials are invalid", "OK").ContinueWith(tsk => {
-                        CameraManipulation(true);
-                    });
+                    await DisplayAlert("ERROR", "An error occured", "OK");
                 });
+                CameraManipulation(true);
             }
         }
 
