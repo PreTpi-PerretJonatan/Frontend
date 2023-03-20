@@ -10,6 +10,9 @@ using Xamarin.Forms.Xaml;
 using FitFocus.Models;
 using FitFocus.Views;
 using FitFocus.ViewModels;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.Forms.PlatformConfiguration;
+using ZXing;
 
 namespace FitFocus.Views
 {
@@ -33,6 +36,11 @@ namespace FitFocus.Views
         void RefreshView_Refreshing(System.Object sender, System.EventArgs e)
         {
             _viewModel.Refreshing();
+        }
+
+        void AccountButton_Clicked(Object sender, EventArgs e)
+        {
+            Navigation.ShowPopup(new LogoutPopup());
         }
     }
 }

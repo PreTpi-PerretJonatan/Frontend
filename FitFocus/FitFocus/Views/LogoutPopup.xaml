@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xct:Popup
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="FitFocus.Views.LogoutPopup"
+    HorizontalOptions="End" VerticalOptions="Start"
+    BackgroundColor="red"
+    Size="200,200">
+    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Margin="20">
+        <Label Text="Username :"/>
+        <Label Text="{Binding Username}"/>
+        <Button HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" TextColor="Black" BackgroundColor="LightGray" CornerRadius="5" WidthRequest="150" Text="Preferences" Clicked="PreferencesButton_Clicked"/>
+        <Button HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" TextColor="Black" BackgroundColor="LightGray" CornerRadius="5" WidthRequest="150" Text="Logout" Clicked="LogoutButton_Clicked"/>
+    </StackLayout>
+</xct:Popup>
+
