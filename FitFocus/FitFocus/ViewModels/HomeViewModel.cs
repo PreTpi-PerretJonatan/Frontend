@@ -27,6 +27,7 @@ namespace FitFocus.ViewModels
             IsBusy = true;
             try
             {
+                Workouts.Clear();
                 List<Workout> list = await WorkoutsManager.GetHomeWorkouts();
                 foreach (Workout workout in list)
                 {

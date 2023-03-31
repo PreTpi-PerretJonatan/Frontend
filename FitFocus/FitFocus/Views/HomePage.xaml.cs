@@ -30,7 +30,7 @@ namespace FitFocus.Views
         protected override void OnAppearing()
         {
             try
-            {
+            {;
                 _viewModel.Refreshing();
             } catch (Exception ex)
             {

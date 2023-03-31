@@ -5,11 +5,12 @@ namespace FitFocus.Models
 {
     public class Workout
     {
-        public string id;
-        public string name;
-        public string approximate_duration;
-        public string cover_image_url;
-        public List<Serie> Series;
+        public string id { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public string approximate_duration { get; set; }
+        public string cover_image_url { get; set; }
+        public List<Serie> Series { get; set; }
 
         public string SeriesNumber
         {

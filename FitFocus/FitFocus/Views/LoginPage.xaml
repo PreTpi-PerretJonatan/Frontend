@@ -21,7 +21,7 @@
             </Frame.Background>
             <StackLayout Margin="20">
                 <StackLayout Padding="10,0,10,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
-                    <Label Margin="0, 20, 0, 50" Text="FitFocus" FontSize="Title" TextColor="Black"/>
+                    <Label Margin="0, 20, 0, 50" Text="FitFocus" FontSize="Title" TextColor="LightGray"/>
                 </StackLayout>
                 <AbsoluteLayout BackgroundColor="Transparent" >
                     <Frame HasShadow="False"
@@ -65,12 +65,12 @@
                            Margin="10,0,0,0"
                            HorizontalOptions="Start"
                            VerticalOptions="Center"
-                           TextColor="Black"/>
+                           TextColor="LightGray"/>
                 
                     <CheckBox Grid.Column="0"
                               x:Name="CheckboxSaveSecurestring"
                               IsChecked="False"
-                              Color="Black"
+                              Color="LightGray"
                               Margin="10,0,0,0"
                               HorizontalOptions="Start"
                               VerticalOptions="Center"/>

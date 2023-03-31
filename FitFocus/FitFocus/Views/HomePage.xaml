@@ -8,61 +8,70 @@
              x:Name="BrowseItemsPage"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False">
-
-    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="False" Padding="{OnPlatform Android='0, 0, 0, 0', iOS='0, 50, 0, 0'}">
-        <Frame.Background>
-            <!-- StartPoint defaults to (0,0) -->
-            <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
-                <GradientStop Color="{StaticResource BackgroundGradientStart}"
-                                Offset="0.1" />
-                <GradientStop Color="{StaticResource BackgroundGradientEnd}"
-                                Offset="1.0" />
-            </LinearGradientBrush>
-        </Frame.Background>
-        <StackLayout Padding="20,0,20,0" Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
-            <StackLayout Orientation="Horizontal" Margin="20, 0, 20, 20">
-                <Label Text="FitFocus" FontSize="Title" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                <ImageButton HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Clicked="AccountButton_Clicked">
-                    <ImageButton.Source>
-                        <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf2bd;"/>
-                    </ImageButton.Source>
-
-                </ImageButton>
-            </StackLayout>
-            <StackLayout>
-                <Image VerticalOptions="Start" Source="https://fitfocus.cld.education/Assets/Images/TPI_HomePageImage.png"/>
-
-            </StackLayout>
-            <StackLayout Margin="0, 20, 0, 20">
-                <Label Text="Workouts" TextColor="White" FontSize="Title" FontAttributes="Bold"/>
-                <Label Text="Recommended workouts for you" TextColor="Gray" FontSize="Small" FontAttributes="Bold"/>
-                <CollectionView x:Name="ItemsListView" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" 
-                    ItemsSource="{Binding Workouts}"
-                    ItemsLayout="HorizontalGrid, 1"
-                    SelectionMode="None">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Workout">
-                            <StackLayout Margin="2, 0, 2, 10">
-                                <Frame HasShadow="false" CornerRadius="50" BackgroundColor="Transparent" Padding="0, 0, 0, 0" Margin="5, 0, 6, 0">
-                                    <AbsoluteLayout Padding="0">
-                                        <!--<Frame HasShadow="False" CornerRadius="20" Padding="0" IsClippedToBounds="True">
-                                            <Image Source="{Binding CoverImageUrl}" WidthRequest="200" HeightRequest="200"/>
-                                        </Frame>-->
-                                        <StackLayout Margin="10, 5, 10, 10" WidthRequest="175" HeightRequest="175">
-                                            <Label Text="{Binding name}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
-                                            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                                                <Label Text="{Binding approximate_duration}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>
-                                                
-                                            </StackLayout>
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" IsClippedToBounds="True" Orientation="Vertical" VerticalOptions="FillAndExpand">
+            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="False" Padding="{OnPlatform Android='0, 0, 0, 0', iOS='0, 0, 0, 0'}">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                        <GradientStop Color="Black"
+                                        Offset="0.1" />
+                        <GradientStop Color="Black"
+                                        Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <StackLayout Padding="0,0,0,0" Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                    <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+                        <AbsoluteLayout>
+                            <Image VerticalOptions="Start" Source="https://fitfocus.cld.education/Ressources/Images/HomePageImage.png" Margin="0" Aspect="AspectFill" />
+                            <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="0" HasShadow="False">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                        <GradientStop Color="Transparent"
+                                                        Offset="0.67" />
+                                        <GradientStop Color="Black"
+                                                        Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                            </Frame>
+                        </AbsoluteLayout>
+                        <StackLayout Margin="40, 38, 40, 0" Orientation="Horizontal" AbsoluteLayout.LayoutBounds="0,0,1,.2" AbsoluteLayout.LayoutFlags="All">
+                            <Label Text="FitFocus" FontSize="33"  FontAttributes="Bold" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <ImageButton x:Name="Btn_UserProfile" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Clicked="AccountButton_Clicked">
+                                <ImageButton.Source>
+                                    <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf2bd;"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </StackLayout>
+                    </AbsoluteLayout>
+                    <StackLayout Margin="0, 0, 0, 20">
+                        <Label Text="Workouts" TextColor="White" FontSize="Title" FontAttributes="Bold"/>
+                        <Label Text="Recommended workouts for you" TextColor="Gray" FontSize="Small" FontAttributes="Bold"/>
+                        <CollectionView x:Name="ItemsListView" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" 
+                            ItemsSource="{Binding Workouts}"
+                            ItemsLayout="HorizontalGrid, 1"
+                            SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:Workout">
+                                    <StackLayout Margin="2, 0, 2, 10">
+                                        <Frame HasShadow="false" CornerRadius="50" BackgroundColor="Transparent" Padding="0, 0, 0, 0" Margin="5, 0, 6, 0">
+                                            <AbsoluteLayout Padding="0">
+                                                <Frame HasShadow="False" CornerRadius="20" Padding="0" IsClippedToBounds="True">
+                                                    <Image Source="{Binding cover_image_url}" WidthRequest="300" HeightRequest="200" Aspect="AspectFill"/>
+                                                </Frame>
+                                            </AbsoluteLayout>
+                                        </Frame>
+                                        <StackLayout Margin="10, 5, 10, 10" Orientation="Horizontal">
+                                            <Label Text="{Binding name}" TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                            <Label Text="{Binding approximate_duration}" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
                                         </StackLayout>
-                                    </AbsoluteLayout>
-                                </Frame>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-        </StackLayout>
-    </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>
 

@@ -37,6 +37,8 @@ namespace FitFocus.Views
                 scanView.IsScanning = true;
             });
 
+            ActivityIndicatorManipulation(false);
+
             // Load the app datas if exists
             LoadAppDatas();
 
@@ -116,6 +118,7 @@ namespace FitFocus.Views
                             App.CurrentUser.SaveLogin = true;
                             await App.CurrentUser.AsyncPersistsPropertiesOnSuccessfulLogin();
                         }
+                        ActivityIndicatorManipulation(false);
                         await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                     });
                 }
@@ -137,6 +140,7 @@ namespace FitFocus.Views
                     await DisplayAlert("ERROR", "An error occured", "OK");
                 });
                 CameraManipulation(true);
+                ActivityIndicatorManipulation(false);
             }
         }
 
