@@ -15,6 +15,7 @@ namespace FitFocus.Services
 	{
         public static string GetUrl()
         {
+            return "http://192.168.0.4/api/";
             return "https://fitfocus.cld.education/api/";
         }
 
@@ -144,6 +145,7 @@ namespace FitFocus.Services
                 var client = new HttpClient();
                 var request = new HttpRequestMessage(HttpMethod.Post, Url);
                 var content = new FormUrlEncodedContent(body);
+                ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications);
                 request.Content = content;
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
