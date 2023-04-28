@@ -22,16 +22,15 @@
         <StackLayout Padding="20,0,20,0" Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
             <StackLayout Orientation="Horizontal" Margin="20, 0, 20, 20">
                 <Label Text="FitFocus" FontSize="Title" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                <ImageButton HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                <ImageButton HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Clicked="AccountButton_Clicked">
                     <ImageButton.Source>
                         <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf2bd;"/>
-
                     </ImageButton.Source>
 
                 </ImageButton>
             </StackLayout>
             <StackLayout>
-                <Image VerticalOptions="Start" Source="https://fitfocus.cld.education/Assets/Images/TPI_HomePageImage.png" />
+                <Image VerticalOptions="Start" Source="https://fitfocus.cld.education/Assets/Images/TPI_HomePageImage.png"/>
 
             </StackLayout>
             <StackLayout Margin="0, 20, 0, 20">
