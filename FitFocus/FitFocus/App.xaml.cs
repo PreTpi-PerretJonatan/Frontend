@@ -4,12 +4,18 @@ using Xamarin.Forms.Xaml;
 using FitFocus.Services;
 using FitFocus.Views;
 using FitFocus.Models;
+using static System.Net.WebRequestMethods;
 
 namespace FitFocus
 {
     public partial class App : Application
     {
         public static User CurrentUser { get; set; }
+        public static string ApiServer {
+            get {
+                return "http://192.168.0.4";
+            }
+        }
 
         public App ()
         {

@@ -4,7 +4,8 @@
              x:Class="FitFocus.Views.HomePage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:FitFocus.ViewModels"  
-             xmlns:model="clr-namespace:FitFocus.Models"  
+             xmlns:model="clr-namespace:FitFocus.Models"
+             x:DataType="local:HomeViewModel"  
              x:Name="BrowseItemsPage"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False">
@@ -21,9 +22,9 @@
                 </Frame.Background>
                 <StackLayout Padding="0,0,0,0" Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
                     <AbsoluteLayout HorizontalOptions="CenterAndExpand">
-                        <AbsoluteLayout>
-                            <Image VerticalOptions="Start" Source="https://fitfocus.cld.education/Ressources/Images/HomePageImage.png" Margin="0" Aspect="AspectFill" />
-                            <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="0" HasShadow="False">
+                        <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+                            <Image  VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Source="{Binding HomePageImage}" Margin="0" Aspect="AspectFill" />
+                            <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="0" HasShadow="False" Margin="0, 0, 0, -1">
                                 <Frame.Background>
                                     <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
                                         <GradientStop Color="Transparent"

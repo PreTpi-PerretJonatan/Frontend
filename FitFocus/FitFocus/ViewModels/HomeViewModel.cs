@@ -16,6 +16,25 @@ namespace FitFocus.ViewModels
     {
         public ObservableCollection<Workout> Workouts { get; }
 
+        public string HomePageImage
+        {
+            get
+            {
+                if (Device.Idiom == TargetIdiom.Tablet)
+                {
+                    // iPad
+                    return App.ApiServer + "/Ressources/Images/Tablet/HomePageImage.png";
+                }
+
+                if (Device.Idiom == TargetIdiom.Phone)
+                {
+                    // iPhone
+                    return App.ApiServer + "/Ressources/Images/Phones/HomePageImage.png";
+                }
+                return "";
+            }
+        }
+
         public HomeViewModel()
         {
             Workouts = new ObservableCollection<Workout>();
