@@ -25,10 +25,18 @@ namespace FitFocus.ViewModels
         public async void Refreshing()
         {
             IsBusy = true;
-            List<Workout> list = await WorkoutsManager.GetHomeWorkouts();
-            foreach (Workout workout in list)
+            try
             {
-                Workouts.Add(workout);
+                Workouts.Clear();
+                List<Workout> list = await WorkoutsManager.GetHomeWorkouts();
+                foreach (Workout workout in list)
+                {
+                    Workouts.Add(workout);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             IsBusy = false;
         }

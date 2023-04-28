@@ -5,11 +5,12 @@ namespace FitFocus.Models
 {
     public class Workout
     {
-        //public string Id { get; set; }
-        public string Name { get; set; }
-        public string ApproxTime { get; set; }
-        public string CoverImageUrl { get; set; }
-        public List<Serie> Series;
+        public string id { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public string approximate_duration { get; set; }
+        public string cover_image_url { get; set; }
+        public List<Serie> Series { get; set; }
 
         public string SeriesNumber
         {
@@ -29,20 +30,21 @@ namespace FitFocus.Models
             if (series is null) series = new List<Serie>();
 
             //this.Id = new Guid().ToString();
-            this.Name = name;
-            this.ApproxTime = approxTime;
-            this.CoverImageUrl = coverImageUrl;
+            this.name = name;
+            this.approximate_duration = approxTime;
+            this.cover_image_url = coverImageUrl;
             this.Series = series;
         }
     }
 
     public class Serie
     {
-        public string Name;
-        public int NumberOfSets;
-        public string TimeBetweenSets;
-        public string TimeAfterSets;
-        public Excercise Excercise;
+        public string id;
+        public string name;
+        public int sets_number;
+        public string time_between_sets;
+        public string time_after_sets;
+        public Excercise excercise;
 
         public Serie()
         {
@@ -51,20 +53,21 @@ namespace FitFocus.Models
 
         public Serie(string name, int numberOfSets, string TimeBetweenSets, string TimeAfterSets, Excercise excercise)
         {
-            this.Name = name;
-            this.NumberOfSets = numberOfSets;
-            this.TimeBetweenSets = TimeBetweenSets;
-            this.TimeAfterSets = TimeAfterSets;
-            this.Excercise = excercise;
+            this.name = name;
+            this.sets_number = numberOfSets;
+            this.time_between_sets = TimeBetweenSets;
+            this.time_after_sets = TimeAfterSets;
+            this.excercise = excercise;
         }
     }
 
     public class Excercise
     {
-        public string Name;
-        public string NumberOfRepetitions;
-        public string PathToVideo;
-        public string PathToCoverImage;
+        public string id;
+        public string name;
+        public string repetitions;
+        public string path_to_cover_image;
+        public string path_to_video;
 
         public Excercise()
         {
@@ -73,21 +76,15 @@ namespace FitFocus.Models
 
         public Excercise(string name, string numberOfRepetitions)
         {
-            this.Name = name;
-            this.NumberOfRepetitions = numberOfRepetitions;
+            this.name = name;
+            this.repetitions = numberOfRepetitions;
         }
     }
 
     public class WorkoutResponse
     {
-        public string Code;
-        public string Status;
-        public string Message;
-        public string Content;
-    }
-
-    public class WorkoutList
-    {
-        public List<Workout> Workouts;
+        public bool success;
+        public Workout[] data;
+        public string message;
     }
 }

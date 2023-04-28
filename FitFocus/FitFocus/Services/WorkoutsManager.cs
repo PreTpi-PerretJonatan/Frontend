@@ -12,10 +12,17 @@ namespace FitFocus.Services
 			List<Workout> workouts = new List<Workout>();
 
 			// Get the workouts list from api
-			
-			//workouts = await ApiService.PostToAPIEndpoint_GetWorkouts(App.CurrentUser.SecureString);
 
-			for (int i = 0; i < 10; i++)
+			try
+			{
+				workouts = await ApiService.PostToAPIEndpoint_GetWorkouts(App.CurrentUser.Token);
+			}
+			catch(Exception ex)
+			{
+				throw ex;
+			}
+
+			/*for (int i = 0; i < 10; i++)
 			{
 				List<Serie> series = new List<Serie>();
 				for (int j = 0; j < 4; j++)
@@ -24,7 +31,7 @@ namespace FitFocus.Services
 				}
 				Workout workout = new Workout("Workout" + i, "1h", "https://fitfocus.cld.education//Assets//Images//TPI_WorkoutBackground.png", series);
 				workouts.Add(workout);
-			}
+			}*/
 
 			return workouts;
 		}
